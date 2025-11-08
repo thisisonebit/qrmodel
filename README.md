@@ -40,6 +40,24 @@ Design intent and extension points (short):
 - Feedback storage is intentionally simple; telemetry & moderation should be
   added before a public deployment.
 
+Deploy to the web (Render)
+-------------------------
+
+One‑click deploy:
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/thisisonebit/qrmodel)
+
+What happens:
+- Render reads `render.yaml`, installs deps, runs `gunicorn app:app`, sets a SECRET_KEY, and uses `/healthz` for health checks.
+- After deploy, copy the Render URL and add it to the GitHub repo “Website” field and to this README.
+
+Manual steps (if not using the button):
+- Create a new Web Service on Render → connect this GitHub repo
+- Build command: `pip install -r requirements.txt`
+- Start command: `gunicorn app:app`
+- Add environment variable SECRET_KEY (any random string)
+- Save; wait for deploy; open the public URL on your phone
+
 Deployment and phone access
 ---------------------------
 
@@ -63,6 +81,7 @@ ngrok http 5000
   - Build command: `pip install -r requirements.txt`
   - Start command (Procfile supported) uses `gunicorn app:app` (already in `Procfile`).
   - Set environment PORT if required (Render provides $PORT automatically).
+  - Health check path: `/healthz` (optional but recommended)
 
 Render and Railway will provide a public URL you can open on your phone. This
 is recommended if you want persistent public access without running your

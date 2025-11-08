@@ -49,7 +49,8 @@ QRCODE_DIR = os.path.join(BASE_DIR, "static", "qrcodes")
 os.makedirs(QRCODE_DIR, exist_ok=True)
 
 app = Flask(__name__)
-app.secret_key = "dev-key-for-prototype"  # replace for production
+# Use env SECRET_KEY when available for production; fallback for local dev
+app.secret_key = os.environ.get("SECRET_KEY", "dev-key-for-prototype")
 
 
 def load_products():
@@ -160,6 +161,12 @@ def generate_qr(url: str, product_key: str) -> str:
     img = qr.make_image(fill_color="black", back_color="white")
     img.save(out_path)
     return f"qrcodes/{filename}"
+
+
+@app.get("/healthz")
+def healthz():
+    """Simple health endpoint for deployment checks."""
+    return {"status": "ok"}
 
 
 @app.route("/", methods=["GET"])  # QR generator form
