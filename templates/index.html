@@ -3,26 +3,27 @@
 
 {% block content %}
 <h2>Producer: Generate a QR for your product</h2>
-<form action="{{ url_for('generate') }}" method="post" class="card">
-    <label for="product_select">Quick select existing product</label>
-    <select id="product_select" name="product_select">
-        <option value="">-- select a product --</option>
-        {% for key, p in products.items() %}
-        <option value="{{ key }}">{{ p.name }} ({{ key }})</option>
-        {% endfor %}
-    </select>
+<div class="card">
+    <label for="product_search">Search products (name or ingredient)</label>
+    <input id="product_search" placeholder="Search e.g. 'ORS', 'paracetamol', 'sugar'" />
+    <ul id="search_results" class="search-results"></ul>
 
-    <div class="or">OR</div>
+    <div class="or">Or enter a new product name</div>
 
-    <label for="product_name">Or enter a new product name</label>
-    <input id="product_name" name="product_name" placeholder="e.g., ORS" />
+    <form id="gen_form" action="{{ url_for('generate') }}" method="post">
+        <input id="product_select" name="product_select" type="hidden" />
+        <label for="product_name">New product name</label>
+        <input id="product_name" name="product_name" placeholder="e.g., ORS" />
+        <div class="actions">
+            <button type="submit" class="btn">Generate QR</button>
+        </div>
+    </form>
+</div>
 
-    <div class="actions">
-        <button type="submit" class="btn">Generate QR</button>
-    </div>
-</form>
 <section class="note">
-    <p>Scanners that open the QR will be redirected to a product info page where
-        consumers can view verified ingredients, safety icons, and leave feedback.</p>
+    <p>Type to search a larger product dataset. Tap a result to select it, then
+        click Generate QR. Scanners will be redirected to the product info page.</p>
 </section>
+
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
 {% endblock %}

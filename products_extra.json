@@ -1,0 +1,211 @@
+{
+    "paracetamol": {
+        "key": "paracetamol",
+        "name": "Paracetamol 500mg Tablet",
+        "short_name": "Paracetamol",
+        "ingredients": [
+            {
+                "name": "Paracetamol",
+                "amount": "500 mg",
+                "safety": "safe"
+            }
+        ],
+        "composition": "Each tablet contains 500 mg paracetamol.",
+        "preparation": "Oral tablet. Follow dosing instructions on the pack.",
+        "side_effects": [
+            "Rare allergic reactions"
+        ],
+        "safety_flags": [
+            "consult_doctor_if_liver_disease"
+        ],
+        "notes": "Common analgesic and antipyretic. Avoid overdosing."
+    },
+    "ibuprofen": {
+        "key": "ibuprofen",
+        "name": "Ibuprofen 200mg Tablet",
+        "short_name": "Ibuprofen",
+        "ingredients": [
+            {
+                "name": "Ibuprofen",
+                "amount": "200 mg",
+                "safety": "caution"
+            }
+        ],
+        "composition": "Each tablet contains 200 mg ibuprofen.",
+        "preparation": "Oral tablet. Take with food to reduce stomach upset.",
+        "side_effects": [
+            "Stomach pain",
+            "dizziness"
+        ],
+        "safety_flags": [
+            "avoid_if_peptic_ulcer"
+        ],
+        "notes": "NSAID — use with caution in people with stomach/heart issues."
+    },
+    "vitc": {
+        "key": "vitc",
+        "name": "Vitamin C 500mg",
+        "short_name": "Vitamin C",
+        "ingredients": [
+            {
+                "name": "Ascorbic acid",
+                "amount": "500 mg",
+                "safety": "safe"
+            }
+        ],
+        "composition": "Vitamin supplement.",
+        "preparation": "Oral tablet.",
+        "side_effects": [
+            "Rare: gastrointestinal upset"
+        ],
+        "safety_flags": [],
+        "notes": "Generally safe at recommended doses."
+    },
+    "antacid": {
+        "key": "antacid",
+        "name": "Antacid Chewable Tablet",
+        "short_name": "Antacid",
+        "ingredients": [
+            {
+                "name": "Calcium carbonate",
+                "amount": "500 mg",
+                "safety": "safe"
+            },
+            {
+                "name": "Magnesium hydroxide",
+                "amount": "200 mg",
+                "safety": "caution"
+            }
+        ],
+        "composition": "Mixture of acid neutralizing agents.",
+        "preparation": "Chew before swallowing.",
+        "side_effects": [
+            "Constipation (calcium)",
+            "Diarrhea (magnesium)"
+        ],
+        "safety_flags": [],
+        "notes": "Do not take within 2 hours of other medications that require acid."
+    },
+    "cough_syrup": {
+        "key": "cough_syrup",
+        "name": "Cough Syrup (Dextromethorphan)",
+        "short_name": "Cough Syrup",
+        "ingredients": [
+            {
+                "name": "Dextromethorphan",
+                "amount": "15 mg/5 mL",
+                "safety": "caution"
+            }
+        ],
+        "composition": "Cough suppressant syrup.",
+        "preparation": "Measure with dosing cup.",
+        "side_effects": [
+            "Drowsiness",
+            "Nausea"
+        ],
+        "safety_flags": [
+            "not_for_children_under_4"
+        ],
+        "notes": "Follow age-appropriate dosing."
+    },
+    "antiseptic_wash": {
+        "key": "antiseptic_wash",
+        "name": "Antiseptic Wash (Chlorhexidine)",
+        "short_name": "Chlorhexidine",
+        "ingredients": [
+            {
+                "name": "Chlorhexidine gluconate",
+                "amount": "0.05%",
+                "safety": "caution"
+            }
+        ],
+        "composition": "Topical antiseptic.",
+        "preparation": "Use externally. Avoid contact with eyes.",
+        "side_effects": [
+            "Skin irritation"
+        ],
+        "safety_flags": [
+            "external_use_only"
+        ],
+        "notes": "For external wound cleansing."
+    },
+    "ors_drink": {
+        "key": "ors",
+        "name": "Oral Rehydration Solution (ORS)",
+        "short_name": "ORS",
+        "ingredients": [
+            {
+                "name": "Glucose (Sugar)",
+                "amount": "13.5 g/L",
+                "safety": "safe"
+            },
+            {
+                "name": "Sodium chloride (Salt)",
+                "amount": "2.6 g/L",
+                "safety": "safe"
+            },
+            {
+                "name": "Potassium chloride",
+                "amount": "1.5 g/L",
+                "safety": "safe"
+            },
+            {
+                "name": "Trisodium citrate",
+                "amount": "2.9 g/L",
+                "safety": "caution"
+            }
+        ],
+        "composition": "Balanced electrolytes and glucose for rehydration.",
+        "preparation": "Mix packet with 1 litre clean water.",
+        "side_effects": [
+            "Occasional nausea"
+        ],
+        "safety_flags": [
+            "safe_for_children"
+        ],
+        "notes": "Demo entry for transparency."
+    },
+    "antibiotic_x": {
+        "key": "antibiotic_x",
+        "name": "Amoxicillin 250mg Capsule",
+        "short_name": "Amoxicillin",
+        "ingredients": [
+            {
+                "name": "Amoxicillin trihydrate",
+                "amount": "250 mg",
+                "safety": "caution"
+            }
+        ],
+        "composition": "Broad-spectrum antibiotic. Prescription only.",
+        "preparation": "Oral capsule.",
+        "side_effects": [
+            "Diarrhea",
+            "Allergic reactions"
+        ],
+        "safety_flags": [
+            "prescription_only"
+        ],
+        "notes": "Do not use without medical advice."
+    },
+    "antifungal_cream": {
+        "key": "antifungal_cream",
+        "name": "Antifungal Cream (Clotrimazole)",
+        "short_name": "Clotrimazole cream",
+        "ingredients": [
+            {
+                "name": "Clotrimazole",
+                "amount": "1%",
+                "safety": "safe"
+            }
+        ],
+        "composition": "Topical antifungal.",
+        "preparation": "Apply thin layer to affected area.",
+        "side_effects": [
+            "Mild irritation"
+        ],
+        "safety_flags": [
+            "external_use_only"
+        ],
+        "notes": "For fungal skin infections."
+    }
+}

@@ -38,6 +38,7 @@ from flask import (
     send_file,
     flash,
     abort,
+    jsonify,
 )
 import qrcode
 
@@ -52,12 +53,18 @@ app.secret_key = "dev-key-for-prototype"  # replace for production
 
 
 def load_products():
-    """Load product data from JSON file.
+    """Load product data from one or more JSON files.
+
+    Behavior:
+      - If multiple product JSON files exist (e.g. `products.json`,
+        `products_extra.json`), all entries are merged. Later files override
+        earlier ones on key collisions. This lets us ship a small canonical
+        file and then add a larger dataset for searchability.
 
     Returns:
         dict: mapping product_key -> product_data
 
-    The product_data structure (example):
+    Example product_data structure:
     {
       "key": "ors",
       "name": "Oral Rehydration Solution",
@@ -71,8 +78,55 @@ def load_products():
       "safety_flags": ["safe_for_children"]
     }
     """
-    with open(DATA_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+    # Support multiple product files: any file starting with "products" and
+    # ending with .json in the app dir will be loaded and merged.
+    products = {}
+    for fname in os.listdir(BASE_DIR):
+        if fname.startswith("products") and fname.endswith(".json"):
+            path = os.path.join(BASE_DIR, fname)
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    # Merge: later files override earlier keys
+                    products.update(data)
+            except Exception:
+                # If a file is broken, skip it to avoid crashing the app.
+                print(f"Warning: could not load product file {path}")
+    return products
+
+
+
+@app.route("/search")
+def search_products():
+    """Search products by name or ingredient.
+
+    Query params:
+      - q: the search query (partial match on product name or ingredient names)
+
+    Returns JSON list of matching product summaries: [{key, name, short_name}]
+    """
+    q = (request.args.get("q") or "").strip().lower()
+    products = load_products()
+    if not q:
+        # Return a short listing for client-side browsing (limit 50)
+        out = [
+            {"key": k, "name": v.get("name"), "short_name": v.get("short_name")}
+            for k, v in list(products.items())[:50]
+        ]
+        return jsonify(out)
+
+    matches = []
+    for k, v in products.items():
+        if q in k.lower() or q in v.get("name", "").lower():
+            matches.append({"key": k, "name": v.get("name"), "short_name": v.get("short_name")})
+            continue
+        # search ingredients
+        for ing in v.get("ingredients", []):
+            if q in ing.get("name", "").lower():
+                matches.append({"key": k, "name": v.get("name"), "short_name": v.get("short_name")})
+                break
+    # limit results
+    return jsonify(matches[:50])
 
 
 def save_feedback(entry: dict):

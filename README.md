@@ -39,3 +39,36 @@ Design intent and extension points (short):
 - Modular routes make it easy to add `/admin` for producer verification.
 - Feedback storage is intentionally simple; telemetry & moderation should be
   added before a public deployment.
+
+Deployment and phone access
+---------------------------
+
+1) Quick local phone access with ngrok (fast, temporary)
+
+```bash
+# start the app in your virtualenv
+python app.py
+
+# in another terminal, install ngrok and run (example):
+ngrok http 5000
+
+# ngrok will print a public URL (https://xxxx.ngrok.io) — open that on your phone
+```
+
+2) Simple cloud deploy (Render / Railway / any Git-based host)
+
+- Push this repo to GitHub.
+- Create a new Web Service on Render (or similar). For Render:
+  - Connect your GitHub repo
+  - Build command: `pip install -r requirements.txt`
+  - Start command (Procfile supported) uses `gunicorn app:app` (already in `Procfile`).
+  - Set environment PORT if required (Render provides $PORT automatically).
+
+Render and Railway will provide a public URL you can open on your phone. This
+is recommended if you want persistent public access without running your
+machine.
+
+Notes on security and production readiness
+- Use a proper SECRET_KEY, enable HTTPS by default (platforms like Render
+  handle TLS), and move JSON storage to a database.
+
