@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name if product else product_key }}{% endblock %}
+
+{% block content %}
+{% if not product %}
+<h2>Unknown product: {{ product_key }}</h2>
+<div class="card">
+    <p>This product is not yet in our verified list. Producers can add verified details in a future flow.
+        Consumers may still send feedback which will help with verification.</p>
+    <form method="post">
+        <label>Your name</label>
+        <input name="name" placeholder="optional" />
+        <label>Feedback</label>
+        <textarea name="comment" placeholder="Report issues, authenticity concerns, or additional info"></textarea>
+        <div class="actions"><button class="btn" type="submit">Send feedback</button></div>
+    </form>
+</div>
+{% else %}
+<h2>{{ product.name }}</h2>
+<div class="meta">
+    <span class="badge">Verified demo</span>
+    {% if 'safe_for_children' in product.get('safety_flags', []) %}
+    <span class="badge safe">✅ Safe for children</span>
+    {% endif %}
+</div>
+
+<section class="card">
+    <h3>Ingredients & Safety</h3>
+    <ul class="ingredients">
+        {% for ing in product.ingredients %}
+        {% set cls = 'safe' if ing.safety == 'safe' else ('caution' if ing.safety == 'caution' else 'hazard') %}
+        <li class="ing {{ cls }}">
+            <strong>{{ ing.name }}</strong> — {{ ing.amount }}
+            <span class="tag">{{ '✅' if ing.safety == 'safe' else ('⚠️' if ing.safety == 'caution' else '☣️') }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <p class="muted">{{ product.notes }}</p>
+</section>
+
+<section class="card">
+    <h3>Composition</h3>
+    <p>{{ product.composition }}</p>
+</section>
+
+<section class="card caution">
+    <h3>Preparation</h3>
+    <p>{{ product.preparation }}</p>
+</section>
+
+<section class="card">
+    <h3>Possible Side Effects</h3>
+    <ul>
+        {% for s in product.side_effects %}
+        <li>{{ s }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="card">
+    <h3>Feedback</h3>
+    <form method="post">
+        <label>Your name</label>
+        <input name="name" placeholder="optional" />
+        <label>Feedback</label>
+        <textarea name="comment" placeholder="Is the label accurate? Any issues?"></textarea>
+        <div class="actions"><button class="btn" type="submit">Send feedback</button></div>
+    </form>
+</section>
+
+<section class="card">
+    <h3>Actions</h3>
+    <a class="btn warn" href="https://consumerhelpline.gov.in/" target="_blank" rel="noopener">Complain to Consumer
+        Helpline</a>
+</section>
+{% endif %}
+{% endblock %}

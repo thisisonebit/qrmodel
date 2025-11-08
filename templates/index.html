@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Generate QR — Product Transparency{% endblock %}
+
+{% block content %}
+<h2>Producer: Generate a QR for your product</h2>
+<form action="{{ url_for('generate') }}" method="post" class="card">
+    <label for="product_select">Quick select existing product</label>
+    <select id="product_select" name="product_select">
+        <option value="">-- select a product --</option>
+        {% for key, p in products.items() %}
+        <option value="{{ key }}">{{ p.name }} ({{ key }})</option>
+        {% endfor %}
+    </select>
+
+    <div class="or">OR</div>
+
+    <label for="product_name">Or enter a new product name</label>
+    <input id="product_name" name="product_name" placeholder="e.g., ORS" />
+
+    <div class="actions">
+        <button type="submit" class="btn">Generate QR</button>
+    </div>
+</form>
+<section class="note">
+    <p>Scanners that open the QR will be redirected to a product info page where
+        consumers can view verified ingredients, safety icons, and leave feedback.</p>
+</section>
+{% endblock %}

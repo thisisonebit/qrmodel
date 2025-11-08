@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Prototype QR-based product transparency system" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>{% block title %}Product QR Transparency{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="container">
+            <h1><a href="/">QR Product Transparency</a></h1>
+        </div>
+    </header>
+    <main class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flash">
+            {% for m in messages %}
+            <div>{{ m }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="footer container">
+        <small>Prototype — product transparency demo. Complaints: <a href="https://consumerhelpline.gov.in/">Consumer
+                Helpline</a></small>
+    </footer>
+</body>
+
+</html>

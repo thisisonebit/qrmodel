@@ -1,0 +1,158 @@
+:root {
+    --bg: #f7f8fb;
+    --card: #ffffff;
+    --muted: #666;
+    --accent: #246;
+    --safe: #dff0d8;
+    --caution: #fff7d6;
+    --hazard: #ffe3e3;
+}
+
+body {
+    font-family: Inter, Segoe UI, Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: #222;
+    margin: 0
+}
+
+.container {
+    max-width: 880px;
+    margin: 28px auto;
+    padding: 0 16px
+}
+
+.topbar {
+    background: #0b6;
+    padding: 8px 0
+}
+
+.topbar h1 {
+    margin: 0;
+    color: #003;
+    padding-left: 8px
+}
+
+a {
+    color: var(--accent)
+}
+
+.card {
+    background: var(--card);
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    margin-bottom: 16px
+}
+
+.qr-card img {
+    width: 220px;
+    height: 220px
+}
+
+form label {
+    display: block;
+    font-weight: 600;
+    margin-top: 10px
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    border-radius: 6px
+}
+
+.actions {
+    margin-top: 10px
+}
+
+.btn {
+    background: #0b6;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer
+}
+
+.btn.warn {
+    background: #c0392b
+}
+
+.btn:active {
+    transform: translateY(1px)
+}
+
+.note {
+    color: var(--muted)
+}
+
+.meta .badge {
+    display: inline-block;
+    background: #eef;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-right: 6px
+}
+
+.meta .safe {
+    background: var(--safe)
+}
+
+.muted {
+    color: var(--muted)
+}
+
+.ingredients {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.ingredients li {
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 8px
+}
+
+.ingredients li.safe {
+    background: var(--safe);
+    border-left: 4px solid #2e7d32
+}
+
+.ingredients li.caution {
+    background: var(--caution);
+    border-left: 4px solid #f0ad4e
+}
+
+.ingredients li.hazard {
+    background: var(--hazard);
+    border-left: 4px solid #d9534f
+}
+
+.ing .tag {
+    float: right
+}
+
+.flash {
+    background: #fffbdd;
+    border: 1px solid #f1e6a0;
+    padding: 8px;
+    margin-bottom: 12px;
+    border-radius: 6px
+}
+
+.footer {
+    padding: 12px;
+    text-align: center;
+    color: #666
+}
+
+.or {
+    text-align: center;
+    color: #999;
+    margin: 12px 0
+}

@@ -1,0 +1,39 @@
+{
+    "ors": {
+        "key": "ors",
+        "name": "Oral Rehydration Solution (ORS)",
+        "short_name": "ORS",
+        "ingredients": [
+            {
+                "name": "Glucose (Sugar)",
+                "amount": "13.5 g/L",
+                "safety": "safe"
+            },
+            {
+                "name": "Sodium chloride (Salt)",
+                "amount": "2.6 g/L",
+                "safety": "safe"
+            },
+            {
+                "name": "Potassium chloride",
+                "amount": "1.5 g/L",
+                "safety": "safe"
+            },
+            {
+                "name": "Trisodium citrate",
+                "amount": "2.9 g/L",
+                "safety": "caution"
+            }
+        ],
+        "composition": "ORS is a balanced mixture of electrolytes and glucose to aid rehydration. Composition per litre shown in ingredients above.",
+        "preparation": "Mix the contents of one ORS packet with exactly 1 litre of clean drinking water. Stir until dissolved. Use immediately (discard after 24 hours).",
+        "side_effects": [
+            "Occasional nausea or vomiting",
+            "Rare: electrolyte imbalance if improperly prepared"
+        ],
+        "safety_flags": [
+            "safe_for_children"
+        ],
+        "notes": "This entry is a demo for transparency; always follow manufacturer instructions."
+    }
+}

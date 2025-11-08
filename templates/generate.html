@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}QR Generated — {{ product_key }}{% endblock %}
+
+{% block content %}
+<h2>QR for {{ product_info.name if product_info else product_key }}</h2>
+<div class="card qr-card">
+    <img src="{{ qr_path }}" alt="QR code for {{ product_key }}" />
+    <p>Scannable URL: <a href="{{ product_url }}">{{ product_url }}</a></p>
+    {% if not product_info %}
+    <p class="muted">Note: No product data found for this key. Consumers will see a placeholder page.</p>
+    {% endif %}
+</div>
+<p><a href="/">Generate another</a></p>
+{% endblock %}
